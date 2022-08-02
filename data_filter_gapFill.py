@@ -5,14 +5,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import fftpack
 from datetime import datetime, timedelta
-import time 
+import time
 import random
 import math
 from tqdm import tqdm
 
 #load data
-fnamedat='datafiles/2000_data_concise.txt'
-cols=9
+fnamedat='datafiles/ACE_data.txt'
+cols=10
 truncate=True
 
 if len(sys.argv) == 2:
@@ -35,68 +35,46 @@ if truncate==True:
     file.truncate(0)
     file.close()
 
-data=np.loadtxt(fname=fnamedat, usecols=range(int(cols)))
+data=np.loadtxt(fname=fnamedat, skiprows=31, usecols=range(int(cols)))
 
-#splitting data into individual colums
-proton_density=np.array(data[0:, 0])
-alpha_particle_ratios=np.array(data[0:, 1])
-proton_speed=np.array(data[0:, 2])
-x_dot_GSE=np.array(data[0:, 3])
-y_dot_GSE=np.array(data[0:, 4])
-z_dot_GSE=np.array(data[0:, 5])
-pos_gse_x=np.array(data[0:, 6])
-pos_gse_y=np.array(data[0:, 7])
-pos_gse_z=np.array(data[0:, 8])
+#splitting data into individual columns
+proton_density=np.array(data[0:, 4])
+alpha_particle_ratios=np.array(data[0:, 5])
+proton_speed=np.array(data[0:, 6])
+x_dot_GSE=np.array(data[0:, 7])
+y_dot_GSE=np.array(data[0:, 8])
+z_dot_GSE=np.array(data[0:, 9])
 
 def main():
     plt.rcParams["figure.figsize"] = (16,11)
-    
-    global proton_density, alpha_particle_ratios, proton_speed, x_dot_GSE, y_dot_GSE, z_dot_GSE, pos_gse_x, pos_gse_y, pos_gse_z
+
+    global proton_density, alpha_particle_ratios, proton_speed, x_dot_GSE, y_dot_GSE, z_dot_GSE
     prde_original=np.array(proton_density)
     prde=filter_data(proton_density, 1)
-    plot_check_filtered_data(prde, prde_original, "Proton Density")
+    #plot_check_filtered_data(prde, prde_original, "Proton Density")
 
     he4r_original=np.array(alpha_particle_ratios)
     he4r=filter_data(alpha_particle_ratios, 1)
-    plot_check_filtered_data(he4r, he4r_original, "Alpha to Proton Ratios")
+    #plot_check_filtered_data(he4r, he4r_original, "Alpha to Proton Ratios")
 
     prsp_original=np.array(proton_speed)
     prsp=filter_data(proton_speed, 1)
-    plot_check_filtered_data(prsp, prsp_original, "Proton Speed")
+    #plot_check_filtered_data(prsp, prsp_original, "Proton Speed")
 
     xde_original=np.array(x_dot_GSE)
     xde=filter_data(x_dot_GSE, 1)
-    plot_check_filtered_data(xde, xde_original, "X H+v km-s GSE")
-    
+    #plot_check_filtered_data(xde, xde_original, "X H+v km-s GSE")
+
     yde_original=np.array(y_dot_GSE)
     yde=filter_data(y_dot_GSE, 1)
-    plot_check_filtered_data(yde, yde_original, "Y H+v km-s GSE")
+    #plot_check_filtered_data(yde, yde_original, "Y H+v km-s GSE")
 
     zde_original=np.array(z_dot_GSE)
     zde=filter_data(z_dot_GSE, 1)
-    plot_check_filtered_data(zde, zde_original, "Z H+v km-s GSE")
+    #plot_check_filtered_data(zde, zde_original, "Z H+v km-s GSE")
 
-    pgx_original=np.array(pos_gse_x)
-    pgx=filter_data(pos_gse_x, 2)
-    plot_check_filtered_data(pgx, pgx_original, "Position X GSE")
-    
-    pgy_original=np.array(pos_gse_y)
-    pgy=filter_data(pos_gse_y, 2)
-    plot_check_filtered_data(pgy, pgy_original, "Position Y GSE")
-    
-    pgz_original=np.array(pos_gse_z)
-    pgz=filter_data(pos_gse_z, 2)
-    plot_check_filtered_data(pgz, pgz_original, "Position Z GSE")
+    write_file(prde, he4r, prsp, xde, yde, zde)
 
-    write_file(prde, he4r, prsp, xde, yde, zde, pgx, pgy, pgz)
-'''
-def filter3(the_array):
-    bad_dataL=[]
-    for i in tqdm(range(the_array.size)):
-        if the_array[i] < 0:
-            bad_dataL.append(i)
-    return bad_dataL
-'''
 def filter1(the_array):
     bad_dataL=[]
     for i in tqdm(range(the_array.size)):
@@ -153,14 +131,6 @@ def gap_fill(array, bad_data, done, filterv):
                 n+=1
             else:
                 break
-#        if bad_data[0]>52000 and bad_data[0]<52500:
-#            if bad_chunk_length>1:
-#                print(bad_chunk_length, bad_data[0])
-#        if bad_data[0]>63000 and bad_data[0]<66000:
-           # print[]
-            #print(bad_chunk_length, bad_data[0])
-#            if bad_chunk_length>1:
-#                print(bad_chunk_length, bad_data[0])
         if array.size > bad_data[0]+bad_chunk_length:
             if bad_chunk_length == 1:
                 array=TypeA_gap(bad_data[0], array, bad_chunk_length)
@@ -171,7 +141,6 @@ def gap_fill(array, bad_data, done, filterv):
                     array=TypeB_gap(bad_data[0], array, bad_chunk_length)
                     bad_data=pop_bad(bad_data, bad_chunk_length)
                 else:
-                    #print("YEAH")
                     if done:
                         array=TypeA_gap(bad_data[0], array, bad_chunk_length)
                         bad_data=pop_bad(bad_data, bad_chunk_length)
@@ -214,7 +183,7 @@ def gap_fill(array, bad_data, done, filterv):
                 array[bad_data[0]]=x1
                 bad_data.pop(0)
     return array, extra_bad
-    
+
 def filter_data(original_array, num):
     bd=[]
     bad=0
@@ -227,22 +196,13 @@ def filter_data(original_array, num):
     even_worse=False
     terrible=False
 
-    #for i in range(3000):
-        #print(original_array[63000+i])
-#    for i in range(25):
-#        asdf=25-i
-#        print(original_array[63148-asdf])
-#    for i in range(25):
-#        print(original_array[65683+i])
-
     new_array, terrible=gap_fill(original_array, bd, False, num)
-#    print("TEST___________________------____")
     if terrible==True:
         if num == 1:
             bd=filter1(new_array)
         elif num == 2:
             bd=filter2(new_array)
-        
+
         newer_array, even_worse=gap_fill(new_array, bd, False, num)
     else:
         newer_array=new_array
@@ -251,14 +211,10 @@ def filter_data(original_array, num):
         if num == 1:
             bd=filter1(newer_array)
         elif num == 2:
-            bd=filter2(newer_array)        
+            bd=filter2(newer_array)
         final, dc=gap_fill(newer_array, bd, True, num)
     else:
         final=newer_array
-    #print(array)
-    #numpy.interp
-
-
     return final
 
 def TypeA_gap(badstart, gap_array, bad_cl):
@@ -268,7 +224,7 @@ def TypeA_gap(badstart, gap_array, bad_cl):
     for i in range(bad_cl):
         gap_array[badstart+i]=x1+z*(1+i)
     return gap_array
-        
+
 def TypeB_gap(badstart, gap_array, bad_cl):
     x1=gap_array[badstart-1]
     x2=gap_array[badstart+bad_cl]
@@ -282,7 +238,7 @@ def TypeB_gap(badstart, gap_array, bad_cl):
         sd2=np.append(sd2, float(gap_array[badstart+bad_cl+i]))
     sd1=np.std(sd1)
     sd2=np.std(sd2)
-    for i in range(bad_cl):    
+    for i in range(bad_cl):
         filler=sd1*(bad_cl-i)/(bad_cl+1)+sd2*(i+1)/(bad_cl+1)
         gap_array[badstart+i]=x1+z*(1+i)+filler
     return gap_array
@@ -292,7 +248,6 @@ def TypeC_gap(badstart, gap_array, bad_cl):
     x2=gap_array[badstart+bad_cl]
     z=(x2-x1)/bad_cl
     gap_filler=np.array([])
-    hanningWin=np.hanning(50)
     nnj=1
     if bad_cl>50:
         nnj=bad_cl//50
@@ -302,12 +257,7 @@ def TypeC_gap(badstart, gap_array, bad_cl):
             nnj=30
     hanningWin=np.hanning(nnj*50+1)
     hanningWin=hanningWin[1:]
-    #print(hanningWin.size)
-    #if badstart>63000 and badstart<66000:
-    #    print("\n\n\n\n\n_______________________")
-    #    for i in range(50):
-    #        print(hanningWin[i], end = " ")
-    #    print("__________________________\n\n\n\n\n")
+
     for extra in range(nnj):
         add=extra*50
         for i in range(25):
@@ -319,46 +269,28 @@ def TypeC_gap(badstart, gap_array, bad_cl):
             filler=0.5*gap_array[badstart+bad_cl+1+i]*float(hanningWin[j+add])
             gap_filler=np.append(gap_filler, filler)
     for i in range(bad_cl):
-        gap_array[badstart+i]=gap_filler[i%len(gap_filler)]###+x1+z*(1+i) #AAAAAAAAAAAAAAAAAAAAAAAAH
+        gap_array[badstart+i]=gap_filler[i%len(gap_filler)]+x1+z*(1+i)
     return gap_array
-'''
-    if badstart>63000 and badstart<66000:
-        # print[]
-        #print(bad_chunk_length, bad_data[0])
-        
-        if bad_cl>1:
-            for i in range(25):
-                tmpval=25-i
-                filler=0.5*gap_array[badstart-tmpval]*float(hanningWin[i+add])
-                print(filler, end=" ")
-            print("\n")
-            for i in range(25):
-                j=25+i
-                filler=0.5*gap_array[badstart+bad_cl+1+i]*float(hanningWin[j+add])
-                print(filler, end=' ')
-'''            
-            #print(bad_cl, badstart) 
 
-    
 def saveplot(title, filetypes):
     for ftype in filetypes:
         filename=f'{title}.{ftype}'
         print(f'saving file {filename}')
         plt.savefig(filename)
 
-def plot_check_filtered_data(array, original, name):    
+def plot_check_filtered_data(array, original, name):
     figure, axis = plt.subplots(2,1)
     axis[0].plot(array)
     axis[0].set_title(f"ACE Filtered {name} Data")
-    
-    #scale/unit of signal of time is currently unknown 
+
+    #scale/unit of signal of time is currently unknown
     plt.setp(axis[0], xlabel="Just Indecies(about 64 second sampling freq)")
     plt.setp(axis[0], ylabel=f"{name}")
-    
+
     axis[1].plot(original)
     axis[1].set_title(f"ACE UnFiltered {name} Data")
 
-    #scale/unit of signal of time is currently unknown 
+    #scale/unit of signal of time is currently unknown
     plt.setp(axis[1], xlabel="Just Indecies(about 64 second sampling freq)")
     plt.setp(axis[1], ylabel=f"{name}")
 
@@ -368,10 +300,10 @@ def plot_check_filtered_data(array, original, name):
     name=name.replace(" ", "_")
 
     saveplot(f'plots/filtertest/{fnamedat[10:-4]}_filtered_{name}', ftypes)
-    
+
     plt.show()
 
-def write_file(pd, apr, ps, xdGSE, ydGSE, zdGSE, xpGSE, ypGSE, zpGSE):
+def write_file(pd, apr, ps, xdGSE, ydGSE, zdGSE):
     print("writing to", f'datafiles/{fnamedat[10:-4]}_Filtered_Data.txt')
     file = open(f'datafiles/{fnamedat[10:-4]}_Filtered_Data.txt',"a")
     #file.write("pd, apr, ps, xdGSE, ydGSE, zdGSE, xpGSE, ypGSE, zpGSE")
@@ -388,15 +320,8 @@ def write_file(pd, apr, ps, xdGSE, ydGSE, zdGSE, xpGSE, ypGSE, zpGSE):
         file.write(str(ydGSE[i]))
         file.write("\t")
         file.write(str(zdGSE[i]))
-        file.write("\t")
-        file.write(str(xpGSE[i]))
-        file.write("\t")
-        file.write(str(ypGSE[i]))
-        file.write("\t")
-        file.write(str(zpGSE[i]))
-        file.write("\t")
         file.write("\n")
     file.close()
-    
+
 if __name__ == '__main__':
     main()

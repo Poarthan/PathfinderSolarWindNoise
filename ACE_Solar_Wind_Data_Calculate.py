@@ -5,13 +5,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import fftpack
 from datetime import datetime, timedelta
-import time 
+import time
 import math
 from tqdm import tqdm
 
 #load data
-fnamedat='datafiles/ACE_data_concise_Filtered_Data.txt'
-cols=9
+fnamedat='datafiles/ACE_data_Filtered_Data.txt'
+cols=6
 truncate=True
 
 if len(sys.argv) == 2:
@@ -43,9 +43,6 @@ proton_speed=np.array(data[0:, 2])
 x_dot_GSE=np.array(data[0:, 3])
 y_dot_GSE=np.array(data[0:, 4])
 z_dot_GSE=np.array(data[0:, 5])
-pos_gse_x=np.array(data[0:, 6])
-pos_gse_y=np.array(data[0:, 7])
-pos_gse_z=np.array(data[0:, 8])
 
 ##2.9 meters diameter
 ar=((2.9)/2)**2
@@ -53,7 +50,7 @@ ar=ar*math.pi
 print(ar)
 
 
-def main():    
+def main():
     #particle_x_force=np.array([])
     #particle_z_force=np.array([])
     f_gen=np.array([])
@@ -65,7 +62,7 @@ def main():
     end=time.perf_counter()
     final=end-start
     print(final)
-    
+
 def calculate_force(sp, de, ar, an, he4, vy, vx, vz):
     #converting g/cm^3 to g/km^3
     #de=de*10**15
@@ -84,14 +81,14 @@ def calculate_force(sp, de, ar, an, he4, vy, vx, vz):
     hitsurface=ar*math.cos(an)
     Np=(de*10**6)*(sp*10**3)*hitsurface
     Na=he4*Np
-    
+
     F1=Np*(1.67262192*10**-27)+Na*(6.6446573357 * 10**-27)
     F2=(1+math.cos(2*an))*(vx*10**3)+math.sin(2*an)*(vz*10**3)
     FX=F1*F2
 
     F2=(1+math.cos(2*an))*(vz*10**3)+math.sin(2*an)*(vx*10**3)
     FZ=F1*F2
-    return float(FX), float(FZ)    
+    return float(FX), float(FZ)
 
 def magnitude(f_x, f_z):
     #sqrt(f_x^2+f_y^2+f_z^2) = f_total
