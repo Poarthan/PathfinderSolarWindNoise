@@ -5,14 +5,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import fftpack
 from datetime import datetime, timedelta
-import time 
+import time
 import random
 import math
 from tqdm import tqdm
 
 #load data
 fnamedat='datafiles/g2_alldat_neg1001.txt'
-cols=1
+cols=2
 truncate=True
 
 if len(sys.argv) == 2:
@@ -38,18 +38,18 @@ if truncate==True:
 data=np.loadtxt(fname=fnamedat, usecols=range(int(cols)))
 
 #splitting data into individual colums
-proton_density=np.array(data)
-
+lisa=np.array(data[0:, 1])
+#time=np.array(data[0, :0])
 
 def main():
     plt.rcParams["figure.figsize"] = (16,11)
-   
-    global LISA_Data
-    prde_original=np.array(proton_density)
-    prde=filter_data(proton_density, 1)
-    plot_check_filtered_data(prde, prde_original, "LISA Data")
 
-    write_file(prde)
+    global LISA_Data
+    lisa_original=np.array(lisa)
+    lisad=filter_data(lisa, 1)
+    plot_check_filtered_data(lisad, lisa_original, "LISA Data")
+
+    write_file(lisad)
 
 '''
 def filter3(the_array):
@@ -176,7 +176,7 @@ def gap_fill(array, bad_data, done, filterv):
                 array[bad_data[0]]=x1
                 bad_data.pop(0)
     return array, extra_bad
-    
+
 def filter_data(original_array, num):
     bd=[]
     bad=0
@@ -204,7 +204,7 @@ def filter_data(original_array, num):
             bd=filter1(new_array)
         elif num == 2:
             bd=filter2(new_array)
-        
+
         newer_array, even_worse=gap_fill(new_array, bd, False, num)
     else:
         newer_array=new_array
@@ -213,7 +213,7 @@ def filter_data(original_array, num):
         if num == 1:
             bd=filter1(newer_array)
         elif num == 2:
-            bd=filter2(newer_array)        
+            bd=filter2(newer_array)
         final, dc=gap_fill(newer_array, bd, True, num)
     else:
         final=newer_array
@@ -230,7 +230,7 @@ def TypeA_gap(badstart, gap_array, bad_cl):
     for i in range(bad_cl):
         gap_array[badstart+i]=x1+z*(1+i)
     return gap_array
-        
+
 def TypeB_gap(badstart, gap_array, bad_cl):
     x1=gap_array[badstart-1]
     x2=gap_array[badstart+bad_cl]
@@ -244,7 +244,7 @@ def TypeB_gap(badstart, gap_array, bad_cl):
         sd2=np.append(sd2, float(gap_array[badstart+bad_cl+i]))
     sd1=np.std(sd1)
     sd2=np.std(sd2)
-    for i in range(bad_cl):    
+    for i in range(bad_cl):
         filler=sd1*(bad_cl-i)/(bad_cl+1)+sd2*(i+1)/(bad_cl+1)
         gap_array[badstart+i]=x1+z*(1+i)+filler
     return gap_array
@@ -287,7 +287,7 @@ def TypeC_gap(badstart, gap_array, bad_cl):
     if badstart>63000 and badstart<66000:
         # print[]
         #print(bad_chunk_length, bad_data[0])
-        
+
         if bad_cl>1:
             for i in range(25):
                 tmpval=25-i
@@ -298,29 +298,29 @@ def TypeC_gap(badstart, gap_array, bad_cl):
                 j=25+i
                 filler=0.5*gap_array[badstart+bad_cl+1+i]*float(hanningWin[j+add])
                 print(filler, end=' ')
-'''            
-            #print(bad_cl, badstart) 
+'''
+            #print(bad_cl, badstart)
 
-    
+
 def saveplot(title, filetypes):
     for ftype in filetypes:
         filename=f'{title}.{ftype}'
         print(f'saving file {filename}')
         plt.savefig(filename)
 
-def plot_check_filtered_data(array, original, name):    
+def plot_check_filtered_data(array, original, name):
     figure, axis = plt.subplots(2,1)
     axis[0].plot(array)
     axis[0].set_title(f"ACE Filtered {name} Data")
-    
-    #scale/unit of signal of time is currently unknown 
+
+    #scale/unit of signal of time is currently unknown
     plt.setp(axis[0], xlabel="Just Indecies(about 64 second sampling freq)")
     plt.setp(axis[0], ylabel=f"{name}")
-    
+
     axis[1].plot(original)
     axis[1].set_title(f"ACE UnFiltered {name} Data")
 
-    #scale/unit of signal of time is currently unknown 
+    #scale/unit of signal of time is currently unknown
     plt.setp(axis[1], xlabel="Just Indecies(about 64 second sampling freq)")
     plt.setp(axis[1], ylabel=f"{name}")
 
@@ -330,7 +330,7 @@ def plot_check_filtered_data(array, original, name):
     name=name.replace(" ", "_")
 
     saveplot(f'plots/filtertest/{fnamedat[10:-4]}_filtered_{name}', ftypes)
-    
+
     plt.show()
 
 def write_file(pd):
@@ -339,9 +339,11 @@ def write_file(pd):
     #file.write("pd, apr, ps, xdGSE, ydGSE, zdGSE, xpGSE, ypGSE, zpGSE")
     #file.write("\n")
     for i in tqdm(range(pd.size)):
+        #file.write(str(time[i]))
+        #file.write("\t")
         file.write(str(pd[i]))
         file.write("\n")
     file.close()
-    
+
 if __name__ == '__main__':
     main()

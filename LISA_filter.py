@@ -9,7 +9,7 @@ import time
 import tqdm
 
 #load data
-fnamedat='datafiles/g2_huge_file_ifft_radians_gap_filled_data_ifft.txt'
+fnamedat='datafiles/LISA_full_25_gf.txt'
 cols=2
 #fnametimes='datafiles/g1_huge_file_times.dat'
 
@@ -21,9 +21,13 @@ elif len(sys.argv) == 3:
     #fnametimes = sys.argv[2]
     cols = sys.argv[3]
 else:
-    sys.stderr.write(f'usage: {sys.argv[0]} [--gps] file.dat\n')
-        
+    sys.stderr.write(f'no arguments given')
+
 data=np.loadtxt(fname=fnamedat, usecols=range(cols))
+
+file = open(f'datafiles/g2_alldat_neg1001.txt',"a")
+file.truncate(0)
+file.close()
 
 #splitting data into individual colums
 time=np.array(data[0:, 0])
@@ -46,70 +50,41 @@ def main():
             combined[i]=-1001
     file = open(f'datafiles/g2_alldat_neg1001.txt',"a")
     for i in range(combined.size):
+        file.write(str(time[i]))
+        file.write("\t")
         file.write(str(combined[i]))
         file.write("\n")
     file.close()
     freq=time
 
     #freq=freq+gps
-    
+
     plt.rcParams["figure.figsize"] = (16,11)
 
     figure, axis = plt.subplots(2,1)
-    
+
     axis[0].plot(freq, combined)
     axis[0].set_title("TimeSeriesDomain: with Gaps Filled")
-    
-    #scale/unit of signal of time is currently unknown 
+
+    #scale/unit of signal of time is currently unknown
     plt.setp(axis[0], xlabel="time(gps)")
     plt.setp(axis[0], ylabel="signal")
     ################33 LEGENDS NOT WORKING
     axis[0].legend()
-    
+
     axis[1].plot(freq, combined)
     axis[1].set_title("TimeSeriesDomain: with Gaps filled")
 
-    #scale/unit of signal of time is currently unknown 
+    #scale/unit of signal of time is currently unknown
     plt.setp(axis[1], xlabel="time(gps)")
     plt.setp(axis[1], ylabel="signal")
 
     #saving plot
     #ftypes=['jpg', 'svg']
-    ftypes=['png', 'svg']
+    ftypes=['png']
     saveplot('plots/LISA_neg_1001', ftypes)
-    
-    plt.show()
 
-    time_vec, sig = time, combined
-    assert(len(time_vec) == len(sig))
-    N = len(time_vec)
-    time_step = time_vec[1] - time_vec[0]
-    #print(time_step)
-    
-    # plot the fft signal
-    plot_original(freq, sig, 311, 'TimeSeriesDomain of Satellite Data')
-
-    # better time format
-    sig_fft = fftpack.fft(sig)
-    # The corresponding frequencies
-    freqs = fftpack.fftfreq(len(sig), d=time_step)
-    plot_fft(freqs[:N//2], np.abs(sig_fft[:N//2]), 312, 'FFT-Amplitude Spectrum of Data')
-    
-    # And the power (sig_fft is of complex dtype)
-    power = np.abs(sig_fft)**2
-
-    amplitude = np.sqrt(power)
-    
-    # plot the fft, zoomed in
-    plot_fft(freqs[:N//8], np.abs(sig_fft[:N//8]), 313, 'xzoom')
-
-    ###labels code is made, but kind of ugly, so just title for now
-    #ftypes=['jpg', 'svg']
-    ftypes=['png', 'svg']
-    saveplot('LISA-neg1001', ftypes)
-    plt.show()
-
-
+    #plt.show()
 
 def get_data(fname):
     #load data
@@ -124,12 +99,12 @@ def get_data(fname):
     np.set_printoptions(suppress=True, precision=30)
     #print(time, combined, imaginary)
     return time, combined
-    
+
 def get_UTC_datetime(gps):
     utc = datetime(1980, 1, 6) + timedelta(seconds=gps - (37-18))#apparently leap seconds between gps and utc team need to be calculated
     print(utc)
     return utc
-    
+
 
 
 def saveplot(title, filetypes):
@@ -137,7 +112,7 @@ def saveplot(title, filetypes):
         filename=f'{title}.{ftype}'
         print(f'saving file {filename}')
         plt.savefig(filename)
-        
+
 def saving_original_data_to_dat_file(time, combined):
     #creating 3 column data
     newdata=np.column_stack((time, combined))
@@ -176,8 +151,8 @@ def plot_fft(freqs, sigfft, subp, ylab):
     #plt.xlabel("time")
     markerline, stemlines, baseline = plt.stem(freqs, np.abs(sigfft), '-.')
     plt.setp(stemlines, 'linewidth', 0.2)
-    # plt.stem(freqs, np.abs(sigfft))    
-    
+    # plt.stem(freqs, np.abs(sigfft))
+
 if __name__ == '__main__':
     main()
-    
+

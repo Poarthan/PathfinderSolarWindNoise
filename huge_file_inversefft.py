@@ -35,21 +35,21 @@ def main():
     #saving_original_data_to_dat_file(final)
     asdf=np.arange(final.size)
     asdf2=np.arange(final2.size)
-    
+
     plt.plot(asdf, final.real, asdf2, final2.real, alpha=0.6)
     plt.legend()
     #lasdf.legend([final, final2], ['label1', 'label2'])
-    
+
     plt.show()
 '''
-    
+
 def main():
     global long_x1, long_x2
-    with open('tmpParseFiles/g2_z_data_filenames.txt') as file:
+    with open('datafiles/catalog/filenames_g2_z.txt') as file:
         lines = file.readlines()
         lines = [line.rstrip() for line in lines]
         for j in lines:
-            x = np.loadtxt(f'catalog/{j}')
+            x = np.loadtxt(f'datafiles/catalog/{j}')
             #x = np.loadtxt('catalog/g2_z_1150680613_16384.txt')
             # rebuild the full real component of the spectrum: 0, positive frequencies, negative/flipped frequencies
             if x.size == 3276*3:

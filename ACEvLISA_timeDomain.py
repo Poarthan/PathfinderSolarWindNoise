@@ -3,9 +3,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from scipy import fftpack
+from tqdm import tqdm
 
 def main():
-    ACE='datafiles/ACE_data_concise_Filtered_Data_calculated_data.txt'
+    ACE='datafiles/ACE_data_Filtered_Data_calculated_data.txt'
     lisa='datafiles/g2_alldat_neg1001_Filtered_Data.txt'
     lisa2='datafiles/LISA_full_25_gf.txt'
     acetimes='datafiles/ACE_time_seconds.txt'
@@ -19,7 +20,17 @@ def main():
     at=np.array(acetimesd)
 
     plt.rcParams["figure.figsize"] = (16,11)
-    
+    for i in tqdm(range(at.size)):
+        if at[i]>lt[0]-1:
+            at=at[i-1:]
+            a=a[i-1:]
+            break
+    for i in tqdm(range(at.size)):
+        if at[i] > lt[-1] + 1:
+            at=at[:i]
+            a=a[:i]
+            break
+
     #l= l * (5*10**9)
     plot_(a, l, at, lt)
     #saving plot
@@ -30,15 +41,15 @@ def main():
     plt.show()
 
 
-def plot_(aa, ll, ati, lti): 
+def plot_(aa, ll, ati, lti):
     figure, axis = plt.subplots(3,1)
     #axis[0].plot(array)
     axis[0].set_title(f"ACE & LPF Data")
     axis[1].set_title(f"LPF Data")
     axis[2].set_title(f"ACE Data")
-    
+
     #scale/unit of signal of time is currently unknown
-    
+
     plt.setp(axis[0], xlabel="  ")
     plt.setp(axis[0], ylabel=f"Force(N)")
     axis[0].grid()
@@ -48,7 +59,7 @@ def plot_(aa, ll, ati, lti):
     plt.setp(axis[2], xlabel="time(gps seconds)")
     plt.setp(axis[2], ylabel=f"Force(N)")
     plt.grid()
-    
+
     axis[0].plot(ati, aa, lti, ll, alpha=0.5)
     blue_patch = mpatches.Patch(color='blue', label='ACE')
     orange_patch = mpatches.Patch(color='orange', label='LPF')
@@ -61,7 +72,7 @@ def saveplot(title, filetypes):
         filename=f'{title}.{ftype}'
         print(f'saving file {filename}')
         plt.savefig(filename)
-        
+
 def plot_original(times, sig, subp, ylab):
     plt.subplot(subp)
     plt.ylabel(ylab)
@@ -81,7 +92,7 @@ def plot_fft(freqs, sigfft, subp, ylab):
     markerline, stemlines, baseline = plt.stem(freqs, np.abs(sigfft), '-.')
     plt.setp(stemlines, 'linewidth', 1)
     np.semilogy(np.abs(freqs), np.abs(sigfft))
-# plt.stem(freqs, np.abs(sigfft))    
+# plt.stem(freqs, np.abs(sigfft))
 
 
 main()

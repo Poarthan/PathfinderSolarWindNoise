@@ -7,7 +7,7 @@ from matplotlib.mlab import psd, csd
 from scipy import fftpack, signal
 from tqdm import tqdm
 def main():
-    ACE='datafiles/ACE_data_concise_Filtered_Data_calculated_data.txt'
+    ACE='datafiles/ACE_data_Filtered_Data_calculated_data.txt'
     LPF='datafiles/g2_alldat_neg1001_Filtered_Data.txt'
     LPF2='datafiles/LISA_full_25_gf.txt'
     acetimes='datafiles/ACE_time_seconds.txt'
@@ -27,7 +27,7 @@ def main():
             at=at[i-1:]
             a=a[i-1:]
             break
-    for i in tqdm(range(at.size)):    
+    for i in tqdm(range(at.size)):
         if at[i] > lt[-1] + 1:
             at=at[:i]
             a=a[:i]
@@ -44,22 +44,15 @@ def main():
     freql = fftpack.fftfreq(LPF.size, d=time_stepa)*2
 
     #print(ace.size, freqa.size, freql.size, LPF.size)
-    
+
     #print(f.size, Cxy.size)
 
 ###############################################################################
     fs=2*1/(16384/3726*2)
-<<<<<<< HEAD
-    nn=lt.size//2  
+    nn=lt.size//2
     f, Cxy = signal.coherence(a, l, fs, nperseg=nn)
     Cxy=np.interp(lt, f, Cxy)
     ###PSDsub Calculations
-=======
-    nn=lt.size//32
-    f, Cxy = signal.coherence(a, l, fs, nperseg=nn)
-    Cxy=np.interp(l, f, Cxy)
-    ####PSDsub Calculations
->>>>>>> 4c71b00b714a0e2afca961334ff4ec5993eff3c3
     Pxx=np.abs(LPF)**2 #LPF = LPF(f), so LPF = fft(LPF)
     Pyy=np.abs(ace)**2 #ace = ACE(f)
     Pxy=np.sqrt(Cxy*Pxx*Pyy)
@@ -68,24 +61,14 @@ def main():
     Tfest=Hstf
     Tff=np.abs(Tfest)**2
     PSDsub = Pxx+Tff*Pyy-2*(Tff*Pxy).real
-<<<<<<< HEAD
-    ##final=np.sqrt(PSDsub)
-=======
-    #final=np.sqrt(PSDsub)
->>>>>>> 4c71b00b714a0e2afca961334ff4ec5993eff3c3
-##############################################################################
     plt.rcParams["figure.figsize"] = (16,11)
     #plot_noise_cancellation(PSDsub, LPF, final, freql)
     plot_noise_cancellation(PSDsub, LPF, freql)
     ftypes=['png']
-<<<<<<< HEAD
     saveplot(f'plots/LPF_Noise_Cancellation', ftypes)
-=======
-    saveplot(f'plots/LPF_Noise_Cancellation2', ftypes)
->>>>>>> 4c71b00b714a0e2afca961334ff4ec5993eff3c3
-    
-    plt.show() 
-    
+
+    plt.show()
+
 def plot_noise_cancellation(psub, Ll, freqs): #(psub, Ll, fin, freqs):
     #plt.plot(array)
     plt.title(f"LPF and PSDsub Data")
@@ -107,5 +90,5 @@ def saveplot(title, filetypes):
         filename=f'{title}.{ftype}'
         print(f'saving file {filename}')
         plt.savefig(filename)
-        
+
 main()
