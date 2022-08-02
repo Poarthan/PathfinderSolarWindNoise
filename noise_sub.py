@@ -49,10 +49,17 @@ def main():
 
 ###############################################################################
     fs=2*1/(16384/3726*2)
+<<<<<<< HEAD
     nn=lt.size//2  
     f, Cxy = signal.coherence(a, l, fs, nperseg=nn)
     Cxy=np.interp(lt, f, Cxy)
     ###PSDsub Calculations
+=======
+    nn=lt.size//32
+    f, Cxy = signal.coherence(a, l, fs, nperseg=nn)
+    Cxy=np.interp(l, f, Cxy)
+    ####PSDsub Calculations
+>>>>>>> 4c71b00b714a0e2afca961334ff4ec5993eff3c3
     Pxx=np.abs(LPF)**2 #LPF = LPF(f), so LPF = fft(LPF)
     Pyy=np.abs(ace)**2 #ace = ACE(f)
     Pxy=np.sqrt(Cxy*Pxx*Pyy)
@@ -61,13 +68,21 @@ def main():
     Tfest=Hstf
     Tff=np.abs(Tfest)**2
     PSDsub = Pxx+Tff*Pyy-2*(Tff*Pxy).real
+<<<<<<< HEAD
     ##final=np.sqrt(PSDsub)
+=======
+    #final=np.sqrt(PSDsub)
+>>>>>>> 4c71b00b714a0e2afca961334ff4ec5993eff3c3
 ##############################################################################
     plt.rcParams["figure.figsize"] = (16,11)
     #plot_noise_cancellation(PSDsub, LPF, final, freql)
     plot_noise_cancellation(PSDsub, LPF, freql)
     ftypes=['png']
+<<<<<<< HEAD
     saveplot(f'plots/LPF_Noise_Cancellation', ftypes)
+=======
+    saveplot(f'plots/LPF_Noise_Cancellation2', ftypes)
+>>>>>>> 4c71b00b714a0e2afca961334ff4ec5993eff3c3
     
     plt.show() 
     
