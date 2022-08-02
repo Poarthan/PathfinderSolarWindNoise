@@ -1,6 +1,5 @@
 # solarWindDataAnalysis
 
-
 ## Plots
 All generated plots are in the plots folder, so no need to compile them once again.
 ```
@@ -25,7 +24,22 @@ Noise cancellation plot:
 eog LPF_Noise_Cancellation.png
 ```
 
+##Getting Data
+There will some cleaning up of the code for easier use.
+ACE data used can be accessed from this website: https://izw1.caltech.edu/ACE/ASC/level2/lvl2DATA_SWEPAM.html. 2016 data, UTC year, day, hour, min, sec, H+ density, He4/H+, H+ speed, and velocity x,y,z of solar wind ions in GSE coordinates is required.
 
+Download the data from the website, extract it to a new directory datafiles, and from there make a file of the first 5 columns and a file of the rest of the columns:
+```
+unzip ~/Downloads/[ACE_data].zip -d ./datafiles
+cd ./datafiles
+mv -iv A* ACE_data.txt
+```
+
+For the LISA Pathfinder data, download it from this link: (to be added)
+```
+tar -tzf ~/Downloads/g2_lisa_filtered_data.tar.xz
+mv ~/Downloads/g2_lisa_filtered_data .
+```
 
 
 
