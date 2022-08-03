@@ -6,7 +6,7 @@ from scipy import fftpack
 
 def main():
     global aces, big, at, lt, l, lisas, a, freqa, freql, freql2, lisas2
-    ACE='datafiles/ACE_data_concise_Filtered_Data_calculated_data.txt'
+    ACE='datafiles/ACE_data_Filtered_Data_calculated_data.txt'
     lisa='datafiles/g2_alldat_neg1001_Filtered_Data.txt'
     lisa2='datafiles/LISA_full_25_gf.txt'
     acetimes='datafiles/ACE_time_seconds.txt'
@@ -30,21 +30,21 @@ def main():
     freqb = fftpack.fftfreq(len(sigb), d=time_stepa)
     freql= (freqb)*2
     freqa = (freqc)*2
-    for i in range(freql.size):    
+    for i in range(freql.size):
         if abs(freql[i]) > abs(freqa[freqa.size//2]) + 0.0001:
             freql2=freql[:i]
             lisas2=lisas[:i]
             break
-    big= lisas2 
+    big= lisas2
     plt.rcParams["figure.figsize"] = (16,11)
     plot_(aces, big, at, lt, l, lisas, a, freqa, freql, freql2, lisas2)
     #saving plot
     #ftypes=['jpg']
     ftypes=['png']
     saveplot(f'plots/ACE_and_LPF_Loglog', ftypes)
-    
+
     plt.show()
-    
+
 def plot_(aces, big, at, lt, l, lisas, a, freqa, freql, freql2, lisas2):
     figure, axis = plt.subplots(3,1)
     #axis[0].plot(array)
@@ -60,7 +60,7 @@ def plot_(aces, big, at, lt, l, lisas, a, freqa, freql, freql2, lisas2):
     axis[0].set_ylim(10**-9,10**-2)
     axis[1].set_ylim(10**-9,10**-2)
     axis[2].set_ylim(10**-9,10**-2)
-    #scale/unit of signal of frequency is currently unknown 
+    #scale/unit of signal of frequency is currently unknown
     #plt.setp(axis[0], xlabel="Frequency(Hz)")
     #plt.setp(axis[0], ylabel=f"Signal(N)")
     #plt.setp(axis[1], xlabel="Frequency(Hz)")
@@ -80,5 +80,5 @@ def saveplot(title, filetypes):
         filename=f'{title}.{ftype}'
         print(f'saving file {filename}')
         plt.savefig(filename)
-        
+
 main()

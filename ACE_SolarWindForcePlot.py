@@ -5,12 +5,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import fftpack
 from datetime import datetime, timedelta
-import time 
+import time
 import math
 from tqdm import tqdm
 
 #load data
-fnamedat='datafiles/ACE_data_concise_Filtered_Data_calculated_data.txt'
+fnamedat='datafiles/ACE_data_Filtered_Data_calculated_data.txt'
 cols=3
 fnametimes='datafiles/ACE_time_seconds.txt'
 
@@ -25,7 +25,7 @@ elif len(sys.argv) == 1:
     print("_testing, 2000 data_")
 else:
     sys.stderr.write(f'usage: {sys.argv[0]} [--gps] file.dat\n')
-        
+
 data=np.loadtxt(fname=fnamedat, usecols=range(int(cols)))
 
 #splitting data into individual colums
@@ -44,17 +44,17 @@ def main():
 
     plot_data(particle_x_force, particle_z_force, "Solar Wind X Force", "Solar Wind X Force")
     plt.show()
-    
+
 
 ######################################################################
 ############## fft of fx Force
-    
+
     time_vec, sig = freq, particle_x_force
     assert(len(time_vec) == len(sig))
     N = len(time_vec)
     time_step = time_vec[1] - time_vec[0]
     #print(time_step)
-    
+
     # plot the fft signal
     plot_original(freq, sig, 311, 'Force X ACE Solar Wind Data')
 
@@ -79,7 +79,7 @@ def main():
     N = len(time_vec)
     time_step = time_vec[1] - time_vec[0]
     #print(time_step)
-    
+
     # plot the fft signal
     plot_original(freq, sig, 311, 'Force X ACE Solar Wind Data')
 
@@ -107,7 +107,7 @@ def main():
     # better frequency format
     sig_fft = fftpack.fft(sig)
     # The corresponding frequencies
-    freqs = fftpack.fftfreq(len(sig), d=time_step)    
+    freqs = fftpack.fftfreq(len(sig), d=time_step)
     # plot the fft signal
     plot_original(np.abs(freqs), np.abs(sig_fft), 111, 'Force General ACE Solar Wind Data')
 
@@ -117,22 +117,22 @@ def main():
     plt.show()
 
 
-def plot_data(array, original, name1, name2):    
+def plot_data(array, original, name1, name2):
     figure, axis = plt.subplots(2,1)
     axis[0].plot(array)
     axis[0].set_title(f"ACE {name1} Data")
 
     axis[0].semilogy(array)
-    
-    #scale/unit of signal of time is currently unknown 
+
+    #scale/unit of signal of time is currently unknown
     plt.setp(axis[0], xlabel="Just Indecies(about 64 second sampling freq)")
     plt.setp(axis[0], ylabel=f"{name1}")
 
-    
+
     axis[1].plot(array)
     axis[1].set_title(f"ACE {name2} Data")
     #axis[1].semilogy(freqs, sigfft)
-    #scale/unit of signal of time is currently unknown 
+    #scale/unit of signal of time is currently unknown
     plt.setp(axis[1], xlabel="Just Indecies(about 64 second sampling freq)")
     plt.setp(axis[1], ylabel=f"{name2}")
 
@@ -142,10 +142,10 @@ def plot_data(array, original, name1, name2):
     name1=name1.replace(" ", "_")
     name2=name2.replace(" ", "_")
     saveplot(f'plots/ACE/{fnamedat[10:-4]}_filtered_{name1}_{name2}', ftypes)
-    
+
     plt.show()
-    
-    
+
+
 def get_UTC_datetime(gps):
     utc = datetime(1980, 1, 6) + timedelta(seconds=gps - (37-18))#apparently leap seconds between gps and utc team need to be calculated
     print(utc)
@@ -156,7 +156,7 @@ def saveplot(title, filetypes):
         filename=f'{title}.{ftype}'
         print(f'saving file {filename}')
         plt.savefig(filename)
-        
+
 def plot_original(times, sig, subp, ylab):
     plt.subplot(subp)
     plt.ylabel(ylab)
@@ -182,7 +182,7 @@ def plot_fft(freqs, sigfft, subp, ylab):
     print("hello")
     plt.semilogy(np.abs(freqs), np.abs(sigfft))
     print("world")
-    # plt.stem(freqs, np.abs(sigfft))    
-    
+    # plt.stem(freqs, np.abs(sigfft))
+
 if __name__ == '__main__':
     main()

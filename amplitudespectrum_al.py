@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from scipy import fftpack
 
 def main():
-    filea='datafiles/ACE_data_concise_Filtered_Data_calculated_data.txt'
+    filea='datafiles/ACE_data_Filtered_Data_calculated_data.txt'
     fileb='datafiles/g2_huge_file_ifft_radians_gap_filled_data_ifft.txt'
     filec='datafiles/ACE_time_seconds.txt'
     colsa= 3
@@ -24,8 +24,8 @@ def main():
 #    plot_(ace, big, at, lt)
 
     ############## plot2 comparison of LISA and ACE data
-    
-    
+
+
     sig = a
     time_step = 16384/3276
     N=sig.size
@@ -39,7 +39,7 @@ def main():
     # plot the fft, zoomed in
     freq1=freqs
     sig_fft1=sig_fft
-    
+
     sig = big
     N=sig.size
     time_step = 64
@@ -52,8 +52,8 @@ def main():
     #print(freqs.size, sig_fft.size)
     plot_fft(freqs[:N//2], np.abs(sig_fft[:N//2]), 312, 'LPF G2 Data')
 
-    
-    
+
+
     plt.subplot(313)
     plt.ylabel("ACE vs LPF data")
     #not the best way to make the title and labels, will improve later
@@ -66,7 +66,7 @@ def main():
     N=sig_fft1.size
     markerline, stemlines, baseline = plt.stem(freq1[:N//2], np.abs(sig_fft1[:N//2]), '-')
     plt.setp(stemlines, 'linewidth', 0.2)
-    
+
     ###labels code is made, but kind of ugly, so just title for now
     ftypes=['jpg']
     #ftypes=['png']
@@ -75,22 +75,22 @@ def main():
 
 
 
-    
-def plot_(ace, big, at, lt): 
+
+def plot_(ace, big, at, lt):
     figure, axis = plt.subplots(3,1)
     #axis[0].plot(array)
     axis[0].set_title(f"ACE & LISA Data")
     axis[1].set_title(f"LISA Data")
     axis[2].set_title(f"ACE Data")
-    
-    #scale/unit of signal of time is currently unknown 
+
+    #scale/unit of signal of time is currently unknown
     plt.setp(axis[0], xlabel="time")
     plt.setp(axis[0], ylabel=f"signal")
     plt.setp(axis[1], xlabel="time")
     plt.setp(axis[1], ylabel=f"signal")
     plt.setp(axis[2], xlabel="time")
     plt.setp(axis[2], ylabel=f"signal")
-    
+
     axis[0].plot(at, ace, lt, big)
     axis[1].plot(lt, big)
     axis[2].plot(at, ace)
@@ -98,7 +98,7 @@ def plot_(ace, big, at, lt):
     #ftypes=['jpg']
     ftypes=['png']
     saveplot(f'plots/ACE_and_LISA', ftypes)
-    
+
     plt.show()
 
 def saveplot(title, filetypes):
@@ -106,7 +106,7 @@ def saveplot(title, filetypes):
         filename=f'{title}.{ftype}'
         print(f'saving file {filename}')
         plt.savefig(filename)
-        
+
 def plot_original(times, sig, subp, ylab):
     plt.subplot(subp)
     plt.ylabel(ylab)
@@ -125,7 +125,7 @@ def plot_fft(freqs, sigfft, subp, ylab):
     #plt.xlabel("frequency")
     markerline, stemlines, baseline = plt.stem(freqs, np.abs(sigfft), '-.')
     plt.setp(stemlines, 'linewidth', 0.2)
-    # plt.stem(freqs, np.abs(sigfft))    
+    # plt.stem(freqs, np.abs(sigfft))
 
 
 main()
