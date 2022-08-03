@@ -1,2 +1,0 @@
-\beamer@sectionintoc {1}{First Section}{3}{0}{1}
-\beamer@sectionintoc {2}{Second Section}{6}{0}{2}

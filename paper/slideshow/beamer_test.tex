@@ -7,6 +7,9 @@
 \usepackage{hyperref}
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\setbeamerfont{block title}{size=\Huge}
+
+\setbeamerfont{block body}{size=\Huge}
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -34,110 +37,107 @@
     % Print the title page as the first slide
     \titlepage
 \end{frame}
-
-\begin{frame}{Overview}
-    % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
-    \tableofcontents
+%------------------------------------------------
+\begin{frame}{Newton}
+    \centering
+    \includegraphics[height=7cm]{newton.jpg}
 \end{frame}
-
 %------------------------------------------------
-\section{First Section}
-%------------------------------------------------
+\begin{frame}{Einstein}
+    %\centering
+    \begin{columns}[t]
+    \begin{column}{3cm}
 
-\begin{frame}{Bullet Points}
-    \begin{itemize}
-        \item Lorem ipsum dolor sit amet, consectetur adipiscing elit
-        \item Aliquam blandit faucibus nisi, sit amet dapibus enim tempus eu
-        \item Nulla commodo, erat quis gravida posuere, elit lacus lobortis est, quis porttitor odio mauris at libero
-        \item Nam cursus est eget velit posuere pellentesque
-        \item Vestibulum faucibus velit a augue condimentum quis convallis nulla gravida
-    \end{itemize}
-\end{frame}
+    \includegraphics[height=6cm]{einstein.jpg}
 
-%------------------------------------------------
+    \end{column}
+    \begin{column}{5cm}
+    \begin{varblock}
+    \Huge\[G_{\mu\nu}=\frac{8\pi G}{c{^4}}T_{\mu\nu}\]
+    \end{varblock}
 
-\begin{frame}{Blocks of Highlighted Text}
-    In this slide, some important text will be \alert{highlighted} because it's important. Please, don't abuse it.
-
-    \begin{block}{Block}
-        Sample text
-    \end{block}
-
-    \begin{alertblock}{Alertblock}
-        Sample text in red box
-    \end{alertblock}
-
-    \begin{examples}
-        Sample text in green box. The title of the block is ``Examples".
-    \end{examples}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}{Multiple Columns}
-    \begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-
-        \column{.45\textwidth} % Left column and width
-        \textbf{Heading}
-        \begin{enumerate}
-            \item Statement
-            \item Explanation
-            \item Example
-        \end{enumerate}
-
-        \column{.5\textwidth} % Right column and width
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-
+    \begin{varblock}
+    \Huge\[h=\frac{2G}{c{^4}}\frac{1}{r}\frac{\delta{^2}Q}{\delta t{^2}}\]
+    \end{varblock}
+    \end{column}
     \end{columns}
+
+
 \end{frame}
 
 %------------------------------------------------
-\section{Second Section}
-%------------------------------------------------
-
-\begin{frame}{Table}
-    \begin{table}
-        \begin{tabular}{l l l}
-            \toprule
-            \textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2} \\
-            \midrule
-            Treatment 1         & 0.0003262           & 0.562               \\
-            Treatment 2         & 0.0015681           & 0.910               \\
-            Treatment 3         & 0.0009271           & 0.296               \\
-            \bottomrule
-        \end{tabular}
-        \captio{Table caption}
-    \end{table}
+\begin{frame}{Cosmic Microwave Background}
+   \centering
+    \includegraphics[height=7cm]{world.jpg}
 \end{frame}
-
 %------------------------------------------------
-
-\begin{frame}{Theorem}
-    \begin{theorem}[Mass--energy equivalence]
-        $E = mc^2$
-    \end{theorem}
+%------------------------------------------------
+\begin{frame}{Cosmic Microwave Background}
+   \centering
+    \includegraphics[height=7cm]{world.jpg}
 \end{frame}
-
 %------------------------------------------------
-
-\begin{frame}{Figure}
-    Uncomment the code on this slide to include your own image from the same directory as the template .TeX file.
-    %\begin{figure}
-    %\includegraphics[width=0.8\linewidth]{test}
-    %\end{figure}
+\begin{frame}{LIGO}
+    \centering
+    \includegraphics[height=7cm]{ligo.jpg}
 \end{frame}
-
 %------------------------------------------------
-
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-    \frametitle{Citation}
-    An example of the \verb|\cite| command to cite within the presentation:\\~
-
-    This statement requires citation \cite{p1}.
+\begin{frame}{LISA}
+    \centering
+    \includegraphics[height=7cm]{LISA.jpg}
 \end{frame}
-
 %------------------------------------------------
-
+\begin{frame}{LISA Pathfinder}
+    \centering
+    \includegraphics[height=7cm]{LPF.jpg}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Solar Wind}
+    \centering
+    \includegraphics[height=7cm]{solarwind.jpg}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{ACE}
+\centering
+    \includegraphics[height=7cm]{ACE.jpg}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Methods}
+\centering
+    \includegraphics[height=3.5cm, width=14.5cm]{fig1solWmam.jpg}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Time series}
+    \centering
+    \includegraphics[height=8cm]{TimeDomain_Comparison_ACEvLPF-1.png}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{FFT}
+    \centering
+    \includegraphics[height=8cm]{ACE_and_LPF_Loglog-1.png}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Bode Magnitude}
+    \centering
+    \includegraphics[height=8cm]{Bode_Magnitude_Plot-1.png}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Bode Phase}
+    \centering
+    \includegraphics[height=8cm]{Bode_Phase_Plot-1.png}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Coherece}
+    \centering
+    \includegraphics[height=8cm]{ACE_and_LPF_co-1.png}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Noise Cancellation}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Conclusion}
+\end{frame}
+%------------------------------------------------
 \begin{frame}{References}
     % Beamer does not support BibTeX so references must be inserted manually as below
     \footnotesize{
@@ -148,13 +148,11 @@
         \end{thebibliography}
     }
 \end{frame}
-
 %------------------------------------------------
 
 \begin{frame}
-    \Huge{\centerline{\textbf{The End}}}
+    \Huge{\centerline{\textbf{Thank You!!!}}}
 \end{frame}
-
 %----------------------------------------------------------------------------------------
 
-\end{document}
+\end{document}n

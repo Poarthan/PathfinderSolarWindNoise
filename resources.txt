@@ -1,3 +1,0 @@
-https://izw1.caltech.edu/ACE/ASC/level2/lvl2DATA_SWEPAM.html
-https://arxiv.org/abs/1912.07715
-https://markgalassi.codeberg.page/working-groups-html/math-approximations/fourier-filtering.html

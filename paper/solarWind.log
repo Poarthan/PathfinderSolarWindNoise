@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.7.31)  1 AUG 2022 15:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.7.31)  2 AUG 2022 17:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -265,35 +265,65 @@ Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
 Class revtex4-2 Info: Unrecognized array package. Please update this document c
-lass! (Proceeding with fingers crossed.) on input line 67.
-Class revtex4-2 Info: cite was not loaded (OK!) on input line 67.
-Class revtex4-2 Info: mcite was not loaded (OK!) on input line 67.
-Class revtex4-2 Info: multicol was not loaded (OK!) on input line 67.
+lass! (Proceeding with fingers crossed.) on input line 68.
+Class revtex4-2 Info: cite was not loaded (OK!) on input line 68.
+Class revtex4-2 Info: mcite was not loaded (OK!) on input line 68.
+Class revtex4-2 Info: multicol was not loaded (OK!) on input line 68.
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count266
 \l__pdf_internal_box=\box64
 )
-(./solarWind.aux)
+(./solarWind.aux
+
+LaTeX Warning: Label `fig' multiply defined.
+
+
+LaTeX Warning: Label `eq:Hanning Window' multiply defined.
+
+
+LaTeX Warning: Label `eq:Hanning Window' multiply defined.
+
+
+LaTeX Warning: Label `eq:Hanning Window' multiply defined.
+
+
+LaTeX Warning: Label `fig' multiply defined.
+
+
+LaTeX Warning: Label `fig' multiply defined.
+
+
+LaTeX Warning: Label `fig' multiply defined.
+
+
+LaTeX Warning: Label `fig' multiply defined.
+
+
+LaTeX Warning: Label `fig' multiply defined.
+
+
+LaTeX Warning: Label `fig' multiply defined.
+
+)
 \openout1 = `solarWind.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-
-(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+ (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count267
 \scratchdimen=\dimen152
@@ -317,97 +347,97 @@ e
 ))
 \openout3 = `solarWindNotes.bib'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 90.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 91.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 90.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 91.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<fig1solWmam.jpg, id=1, 9080.324pt x 4957.722pt>
+Underfull \hbox (badness 3525) in paragraph at lines 96--97
+[]\OT1/cmr/m/n/10 The fu-ture Laser In-ter-fer-om-e-ter Space An-tenna
+ []
+
+
+Underfull \hbox (badness 1259) in paragraph at lines 96--97
+\OT1/cmr/m/n/10 was sent up with sim-i-lar equip-ment to the fu-ture
+ []
+
+
+Underfull \hbox (badness 1721) in paragraph at lines 96--97
+\OT1/cmr/m/n/10 satel-lite the Ad-vanced Com-po-si-tion Ex-plorer(ACE),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+
+ []
+
+
+LaTeX Warning: File `LPFfigure.png' not found on input line 99.
+
+
+! Package pdftex.def Error: File `LPFfigure.png' not found: using draft setting
+.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.99 ...phics[width=0.5\textwidth]{LPFfigure.png}}
+                                                  
+? 
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 106--107
+
+ []
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+<fig1solWmam.jpg, id=14, 9080.324pt x 4957.722pt>
 File: fig1solWmam.jpg Graphic file (type jpg)
 <use fig1solWmam.jpg>
-Package pdftex.def Info: fig1solWmam.jpg  used on input line 105.
+Package pdftex.def Info: fig1solWmam.jpg  used on input line 116.
 (pdftex.def)             Requested size: 255.0pt x 139.19351pt.
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./fig1solWmam.jpg>]
-
-LaTeX Warning: File `TimeDomain_Comparison_ACEvLPF.png' not found on input line
- 187.
-
-
-! Package pdftex.def Error: File `TimeDomain_Comparison_ACEvLPF.png' not found:
- using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.187 ...idth]{TimeDomain_Comparison_ACEvLPF.png}}
-                                                  
-? 
-
-LaTeX Warning: File `ACE_and_LPF_Loglog.png' not found on input line 193.
-
-
-! Package pdftex.def Error: File `ACE_and_LPF_Loglog.png' not found: using draf
-t setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.193 ...h=0.5\textwidth]{ACE_and_LPF_Loglog.png}}
-                                                  
-? 
-
-LaTeX Warning: File `ACE_and_LPF_co.png' not found on input line 199.
+ [2 <./fig1solWmam.jpg>]
+<TimeDomain_Comparison_ACEvLPF-1.png, id=23, 1156.32pt x 794.97pt>
+File: TimeDomain_Comparison_ACEvLPF-1.png Graphic file (type png)
+<use TimeDomain_Comparison_ACEvLPF-1.png>
+Package pdftex.def Info: TimeDomain_Comparison_ACEvLPF-1.png  used on input lin
+e 201.
+(pdftex.def)             Requested size: 255.0pt x 175.30637pt.
+<ACE_and_LPF_loglog-1.png, id=24, 1156.32pt x 794.97pt>
+File: ACE_and_LPF_loglog-1.png Graphic file (type png)
+<use ACE_and_LPF_loglog-1.png>
+Package pdftex.def Info: ACE_and_LPF_loglog-1.png  used on input line 206.
+(pdftex.def)             Requested size: 255.0pt x 175.30637pt.
+<ACE_and_LPF_co-1.png, id=25, 1156.32pt x 794.97pt>
+File: ACE_and_LPF_co-1.png Graphic file (type png)
+<use ACE_and_LPF_co-1.png>
+Package pdftex.def Info: ACE_and_LPF_co-1.png  used on input line 212.
+(pdftex.def)             Requested size: 255.0pt x 175.30637pt.
+<Bode_Magnitude_Plot-1.png, id=26, 1156.32pt x 794.97pt>
+File: Bode_Magnitude_Plot-1.png Graphic file (type png)
+<use Bode_Magnitude_Plot-1.png>
+Package pdftex.def Info: Bode_Magnitude_Plot-1.png  used on input line 218.
+(pdftex.def)             Requested size: 255.0pt x 175.30637pt.
+<Bode_Phase_Plot-1.png, id=27, 1156.32pt x 794.97pt>
+File: Bode_Phase_Plot-1.png Graphic file (type png)
+<use Bode_Phase_Plot-1.png>
+Package pdftex.def Info: Bode_Phase_Plot-1.png  used on input line 224.
+(pdftex.def)             Requested size: 255.0pt x 175.30637pt.
 
 
-! Package pdftex.def Error: File `ACE_and_LPF_co.png' not found: using draft se
-tting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.199 ...width=0.5\textwidth]{ACE_and_LPF_co.png}}
-                                                  
-? 
-
-LaTeX Warning: File `Bode_Magnitude_Plot.jpg' not found on input line 205.
-
-
-! Package pdftex.def Error: File `Bode_Magnitude_Plot.jpg' not found: using dra
-ft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.205 ...=0.5\textwidth]{Bode_Magnitude_Plot.jpg}}
-                                                  
-? 
-
-LaTeX Warning: File `Bode_Phase_Plot.jpg' not found on input line 210.
-
-
-! Package pdftex.def Error: File `Bode_Phase_Plot.jpg' not found: using draft s
-etting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.210 ...idth=0.5\textwidth]{Bode_Phase_Plot.jpg}}
-                                                  
-? 
-
-LaTeX Warning: File `LPF_Noise_Cancellation2.png' not found on input line 216.
+LaTeX Warning: File `LPF_Noise_Cancellation2.png' not found on input line 230.
 
 
 ! Package pdftex.def Error: File `LPF_Noise_Cancellation2.png' not found: using
@@ -417,50 +447,64 @@ See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.216 ...\textwidth]{LPF_Noise_Cancellation2.png}}
+l.230 ...\textwidth]{LPF_Noise_Cancellation2.png}}
                                                   
 ? 
-
-Underfull \hbox (badness 10000) in paragraph at lines 185--221
-
- []
-
-[2]
+[3 <./TimeDomain_Comparison_ACEvLPF-1.png (PNG copy)> <./ACE_and_LPF_Loglog-1.p
+ng (PNG copy)> <./ACE_and_LPF_co-1.png (PNG copy)>]
 
 LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix]
- on input line 221.
+ on input line 238.
 
-No file solarWind.bbl.
-[3] [4] [5] (./solarWind.aux)
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right .
+Package natbib Warning: Citation `stone1998advanced' on page 4 undefined on inp
+ut line 255.
 
+(./solarWind.bbl
+
+LaTeX Warning: Reference `LastBibItem' on page 4 undefined on input line 10.
+
+
+Package natbib Warning: Empty `thebibliography' environment on input line 54.
+
+)
+
+Package natbib Warning: There were undefined citations.
+
+[4 <./Bode_Magnitude_Plot-1.png (PNG copy)> <./Bode_Phase_Plot-1.png (PNG copy)
+>] (./solarWind.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5219 strings out of 481239
- 67532 string characters out of 5920377
- 332402 words of memory out of 5000000
- 20405 multiletter control sequences out of 15000+600000
+ 5196 strings out of 481239
+ 66632 string characters out of 5920377
+ 330469 words of memory out of 5000000
+ 20379 multiletter control sequences out of 15000+600000
  543205 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,15n,37p,1205b,298s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on solarWind.pdf (5 pages, 2025834 bytes).
+ 38i,15n,37p,1238b,296s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on solarWind.pdf (4 pages, 4346060 bytes).
 PDF statistics:
- 73 PDF objects out of 1000 (max. 8388607)
- 51 compressed objects within 1 object stream
+ 79 PDF objects out of 1000 (max. 8388607)
+ 52 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

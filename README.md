@@ -40,9 +40,9 @@ ACE data used can be accessed from this website: https://izw1.caltech.edu/ACE/AS
 
 Download the data from the website, extract it to a new directory datafiles:
 ```
-wget https://izw1.caltech.edu/ACE/ASC/temp2/ASCn6mrPG.zip
-unzip ~/ASCn6mrPG.zip -d ./datafiles
-mv -iv ./datafiles/A* ./datafiles/ACE_data.txt
+wget https://zenodo.org/record/6955182/files/ACE_data.tar.xz?download=1
+tar -tvf ACE_data.tar.gz
+mv -iv ./ACE_data.txt ./datafiles/ACE_data.txt
 ```
 To prepare the ACE data, run:
 ```
@@ -51,17 +51,18 @@ python3 data_filter_gapFill.py
 python3 ACE_Solar_Wind_Data_Calculate.py
 ```
 
-For the LISA Pathfinder data, download it from this link: (to be added)
+For the LISA Pathfinder data, download it from this link(https://zenodo.org/record/6954044):
 ```
-wget [link]
-tar -tvf ~/Downloads/LPF_Force_catalog.tar.gz
-mv -iv ./catalog/ ./datafiles/
+wget https://zenodo.org/record/6954044/files/LPF_Force_catalog.tar.xz?download=1
+cp LPF_Force_catalog.tar.xz?download=1  LPF_Force_catalog.tar.xz
+tar -tvf LPF_Force_catalog.tar.gz
+mv -iv ./catalog/ ./datafiles/catalog/
 ```
 LISA Data instructions:
 ```
 cd datafiles/catalog
 ls g2_z_* > filenames_g2_z.txt
-cd ../..
+LPF_Force_catalog.tar.xz?download=1 cd ../..
 python3 huge_file_time.py
 python3 huge_file_inversefft.py
 python3 old_LISA_FULL_GAP_FILL.py
