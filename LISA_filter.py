@@ -43,10 +43,10 @@ np.set_printoptions(suppress=True, precision=30)
 def main():
     for i in range(combined.size):
         if combined[i] > 1.5*10**-8:
-            print(i, combined[i])
+            #print(i, combined[i])
             combined[i]=-1001
         elif combined[i] < -1.5*10**-8:
-            print(i, combined[i])
+            #print(i, combined[i])
             combined[i]=-1001
     file = open(f'datafiles/g2_alldat_neg1001.txt',"a")
     for i in range(combined.size):
@@ -58,31 +58,31 @@ def main():
     freq=time
 
     #freq=freq+gps
-
-    plt.rcParams["figure.figsize"] = (16,11)
-
-    figure, axis = plt.subplots(2,1)
-
-    axis[0].plot(freq, combined)
-    axis[0].set_title("TimeSeriesDomain: with Gaps Filled")
-
-    #scale/unit of signal of time is currently unknown
-    plt.setp(axis[0], xlabel="time(gps)")
-    plt.setp(axis[0], ylabel="signal")
-    ################33 LEGENDS NOT WORKING
-    axis[0].legend()
-
-    axis[1].plot(freq, combined)
-    axis[1].set_title("TimeSeriesDomain: with Gaps filled")
-
-    #scale/unit of signal of time is currently unknown
-    plt.setp(axis[1], xlabel="time(gps)")
-    plt.setp(axis[1], ylabel="signal")
-
-    #saving plot
-    #ftypes=['jpg', 'svg']
-    ftypes=['png']
-    saveplot('plots/LISA_neg_1001', ftypes)
+#
+#    plt.rcParams["figure.figsize"] = (16,11)
+#
+#    figure, axis = plt.subplots(2,1)
+#
+#    axis[0].plot(freq, combined)
+#    axis[0].set_title("TimeSeriesDomain: with Gaps Filled")
+#
+#    #scale/unit of signal of time is currently unknown
+#    plt.setp(axis[0], xlabel="time(gps)")
+#    plt.setp(axis[0], ylabel="signal")
+#    ################33 LEGENDS NOT WORKING
+#    axis[0].legend()
+#
+#    axis[1].plot(freq, combined)
+#    axis[1].set_title("TimeSeriesDomain: with Gaps filled")
+#
+#    #scale/unit of signal of time is currently unknown
+#    plt.setp(axis[1], xlabel="time(gps)")
+#    plt.setp(axis[1], ylabel="signal")
+#
+#    #saving plot
+#    #ftypes=['jpg', 'svg']
+#    ftypes=['png']
+#    saveplot('plots/LISA_neg_1001', ftypes)
 
     #plt.show()
 
@@ -110,8 +110,8 @@ def get_UTC_datetime(gps):
 def saveplot(title, filetypes):
     for ftype in filetypes:
         filename=f'{title}.{ftype}'
-        print(f'saving file {filename}')
-        plt.savefig(filename)
+        #print(f'saving file {filename}')
+        #plt.savefig(filename)
 
 def saving_original_data_to_dat_file(time, combined):
     #creating 3 column data

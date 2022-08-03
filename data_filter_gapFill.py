@@ -25,7 +25,7 @@ elif len(sys.argv) == 4:
     cols = sys.argv[2]
     truncate = False
 elif len(sys.argv) == 1:
-    print("_testing, 2000 data_")
+    print("using {fnamedat}")
 else:
     sys.stderr.write(f'usage: {sys.argv[0]} [--gps] file.dat\n')
 

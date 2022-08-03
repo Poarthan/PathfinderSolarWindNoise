@@ -24,7 +24,7 @@ elif len(sys.argv) == 4:
     cols = sys.argv[2]
     truncate = False
 elif len(sys.argv) == 1:
-    print("_testing, 2000 data_")
+    print("using {fnamedat}")
 else:
     sys.stderr.write(f'usage: {sys.argv[0]} [--gps] file.dat\n')
 
@@ -47,7 +47,7 @@ z_dot_GSE=np.array(data[0:, 5])
 ##2.9 meters diameter
 ar=((2.9)/2)**2
 ar=ar*math.pi
-print(ar)
+#print(ar)
 
 
 def main():

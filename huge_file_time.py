@@ -23,7 +23,7 @@ def main():
             gps=int(j[5:15])
             dur=int(j[16:21])
             num_lines = sum(1 for line in open(f'./datafiles/catalog/{j}'))
-            print(gps)
+            #print(gps)
             for i in range(num_lines*2+1):
                 diff=dur/(num_lines*2)
                 number=diff*i

@@ -11,7 +11,7 @@ def main():
         lines = file.readlines()
         lines = [line.rstrip() for line in lines]
         lines = lines[31:]
-        print(lines[0:10])
+        #print(lines[0:10])
         for j in lines:
             time=[]
             data=j.split('  ')

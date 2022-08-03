@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import fftpack
 from datetime import datetime, timedelta
-import time 
+import time
 import math
 from tqdm import tqdm
 
@@ -26,7 +26,7 @@ elif len(sys.argv) == 4:
 elif len(sys.argv) == 1:
     print("filling gaps")
 else:
-    sys.stderr.write(f'usage: {sys.argv[0]} [--gps] file.dat\n')
+    sys.stderr.write(f'data: {fnamedat}, time {fnametimes}')
 
 if truncate==True:
     file = open(f'datafiles/LISA_full_25_gf.txt',"a")
@@ -98,7 +98,7 @@ def checktimes():
         space=whatthe[1][0]-whatthe[0][2]-whatthe[0][1]
         if space < 0:
             badlen=True
-    
+
     else:
         space=times[-1]-whatthe[0][2]-whatthe[0][1]
         if space < 0:
@@ -107,7 +107,7 @@ def checktimes():
         return whatthe[0], bbb, badlen, whatthe[1][0]-whatthe[0][1]
     else:
         return whatthe[0], bbb, badlen, times[-1]-whatthe[0][1]
-def calculatedata(tmp, tstart, tend, tdiff, diffthresh, ttime):    
+def calculatedata(tmp, tstart, tend, tdiff, diffthresh, ttime):
     global numbers, times
     start=time.perf_counter()
     gap_array=np.array([])
@@ -134,10 +134,10 @@ def calculatedata(tmp, tstart, tend, tdiff, diffthresh, ttime):
     #print(tmp, ttime)
     end=time.perf_counter()
     final=end-start
-    print(final)
+    #print(final)
     return xtmp, xtime
-    
-def calculate_gapFill(val, dp):    
+
+def calculate_gapFill(val, dp):
     val=float(val)
     dp=float(dp)
     fill=math.pi*val
@@ -146,7 +146,7 @@ def calculate_gapFill(val, dp):
     gapFill2=0.5-(0.5*(cos))
     gapFill=gapFill2*dp
     return gapFill
-    
+
 def write_file(time, gap_fill):
     file = open('datafiles/LISA_full_25_gf.txt',"a")
     file.write(str(time))

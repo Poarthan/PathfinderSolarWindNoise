@@ -58,13 +58,13 @@ def main():
                 long_x2 = np.concatenate(([0.], x[:,2], -np.flip(x[:,2])))
                 # do the iFFT
             elif x.size == 3275*3:
-                print("-------------------ANAMOLY------------------------------")
+                #print("-------------------ANAMOLY------------------------------")
                 long_x1 = np.concatenate(([0.], x[:,1], np.flip(x[:,1]) ))# , [0.]))
                 # rebuild the full imaginary component: 0, positive frequencies, complex conjugate of the negative/flipped freqs
                 long_x2 = np.concatenate(([0.], x[:,2], -np.flip(x[:,2]) ))# , [0.]))
                 # do the iFFT
             else:
-                print(x.size, "??????????????????????????")
+                #print(x.size, "??????????????????????????")
                 long_x1 = np.concatenate(([0.], x[:,1], np.flip(x[:,1])))
                 # rebuild the full imaginary component: 0, positive frequencies, complex conjugate of the negative/flipped freqs
                 long_x2 = np.concatenate(([0.], x[:,2], -np.flip(x[:,2])))
@@ -72,10 +72,11 @@ def main():
 
             final=np.fft.ifft(long_x1 + long_x2*1j)
             print(f'{j}', final)
-            for i in tqdm(range(final.size)):
+            #for i in tqdm(range(final.size)):
+            for i in range(final.size):
                 if final.imag[i] > 1*10**-13:
-                    print(final.imag[i], i)
-                    print("________BAD IMAGINARY DETECTED_____\n\n\n\n", x.size, j)
+                    #print(final.imag[i], i)
+                    #print("________BAD IMAGINARY DETECTED_____\n\n\n\n", x.size, j)
                     input()
             saving_original_data_to_dat_file(final)
 

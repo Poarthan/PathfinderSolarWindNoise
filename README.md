@@ -4,25 +4,30 @@
 All generated plots are in the plots folder, so no need to compile them once again.
 ```
 cd plots
-
 ```
 Time Series Plot:
 ```
 eog TimeDomain_Comparison_ACEvLPF.png
 ```
+Fast Fourier Transformation Plot:
+```
+eog ACE_and_LPF_Loglog.png
+```
 
 Coherence Plot(NOTE: these were a series of plots with different average segement lengths, the average segment length is stated in the title of the plots):
 ```
-eog co_tests2/*
+eog co_tests2/ACE_and_LPF_co.png
 ```
 Bode Plot:
 ```
-eog Bode*
+eog Bode_Phase_Plot.png
+eog Bode_Magnitude_Plot.png
 ```
 Noise cancellation plot:
 ```
 eog LPF_Noise_Cancellation.png
 ```
+
 ## Setup
 Everything here is designed for a Debian flavored Gnu/Linux operating system. python3, and pip3 need to be installed.
 ```
@@ -35,8 +40,11 @@ pip install -r requirements.txt
 
 
 ## Getting Data
-There will some cleaning up of the code for easier use.
-ACE data used can be accessed from this website: https://izw1.caltech.edu/ACE/ASC/level2/lvl2DATA_SWEPAM.html. 2016 data, UTC day, hour, min, sec, H+ density, He4/H+, H+ speed, and velocity x,y,z of solar wind ions in GSE coordinates is required.
+Runing these takes about 10 or so minutes, because there is a lot of data processing with huge datasets. So if you just want the dirend results from the plots go above to the plots
+
+The original ACE data used can be accessed from this website: https://izw1.caltech.edu/ACE/ASC/level2/lvl2DATA_SWEPAM.html. 2016 data, UTC day, hour, min, sec, H+ density, He4/H+, H+ speed, and velocity x,y,z of solar wind ions in GSE coordinates is required.
+
+For easier download just use: https://zenodo.org/record/6955182.
 
 Download the data from the website, extract it to a new directory datafiles:
 ```

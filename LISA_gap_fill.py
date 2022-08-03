@@ -27,7 +27,7 @@ elif len(sys.argv) == 4:
 elif len(sys.argv) == 1:
     print("_testing, 2000 data_")
 else:
-    sys.stderr.write(f'usage: {sys.argv[0]} [--gps] file.dat\n')
+    sys.stderr.write(f'filtering {fnamedat}')
 
 #truncate=False
 if truncate==True:
